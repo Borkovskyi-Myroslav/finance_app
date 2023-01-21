@@ -2,7 +2,7 @@
 
   <p>
     <strong>Category:</strong>
-    <%= operation.category_id %>
+    <%= link_to(operation.category.name, category_path(operation.category_id)) %>
   </p>
 
 
