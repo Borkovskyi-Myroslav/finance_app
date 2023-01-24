@@ -3,15 +3,19 @@
   <p>
     <strong>Category:</strong>
     <%= link_to(operation.category.name, category_path(operation.category_id)) %>
+    <%#= link_to(operation.category.name) %>
   </p>
 
+  <p>
+    <strong>Transaction type:</strong>
+    <%= operation.transaction_type %>
+  </p>
 
   <p>
     <strong>Amount:</strong>
     <%= operation.amount %>
   </p>
 
-  
 
   <p>
     <strong>Odate:</strong>

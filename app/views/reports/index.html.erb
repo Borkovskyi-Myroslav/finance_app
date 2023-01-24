@@ -1,57 +1,12 @@
 <h1>Reports#index</h1>
 <%# <p>Find me in app/views/reports/index.html.erb</p> %>
-Choose a period: 
- from <input type="date"  id="first_date" name="first_date" min="2018-01-01" max="2024-12-31">
- to <input type="date" id="second_date" name="second_date" min="2018-01-01" max="2024-12-31"><br>
- <br>
-<%# Тип операції <input  name="operation" type="text"><br>
-Категорія <input name="category" type="text"><br>  %>
 
+<%= render "form", report: @report %>
 
+<br>
 
-<%# <a href="http://127.0.0.1:3000/reports/report_by_dates" >By Dates</a> %>
-
-
-<%# <button type="submit" class="btn btn-primary" id="btn_category" name="btn_category" value="Category">
-<a href="http://127.0.0.1:3000/reports/report_by_category" >By category</a>
-</button> %>
-
-
-<%# це залишок коду початкового мого із збереженням даних %>
-<form action="report_by_category" method="GET">
-Operation type <input  name="operation" type="text"><br>
-Category <input name="category" type="text"><br> 
-<input type="submit" value="Generate">
-</form>
-
-<button type="submit" class="btn btn-primary"  name="clear" value="Clear">
-
-<a href="http://127.0.0.1:3000/reports/index" >Clear</a>
-
-</button>
-
-<button type="submit" class="btn btn-primary"  name="Graph" value="Graph">
-Graph
-</button>
-
-<button type="submit" class="btn btn-primary"  name="By_Dates" value="By_Dates">
-By Dates
-</button>
-
-
-<%# <form action="report_by_dates" method="GET">
-
-</form>  %>
-
-
-
-
-
-
-<%# кнопки від викладача <button type="submit" class="btn btn-primary" id="btn_submit" name="btn_submit" value="send">Сума</button>
-
-<button type="reset" class="btn btn-primary" id="btn_reset" name="btn_reset" value="reset">Очистити</button>
-
-<button type="submit" class="btn btn-success" id="btn_graph" name="btn_graph" value="graph" >По категоріям</button>
-
-<button type="submit" class="btn btn-danger" id="btn_dynamic" name="btn_dynamic" value="dynamic" >По датам</button> %>
+<div>
+  <button><%= link_to "Clear", reports_path %></button>
+  <button><%= link_to "By Graph", report_by_category_reports_path %></button>
+  <button><%= link_to "By Dates", report_by_dates_reports_path %></button>
+</div>

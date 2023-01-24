@@ -1,0 +1,26 @@
+<%= form_with(model: report) do |form| %>
+
+
+  <div>
+    <%= form.label :first_period, "Period from" %>
+    <%= form.date_field :first_period %>
+  </div>
+
+  <div>
+    <%= form.label :second_period, "Period to" %>
+    <%= form.date_field :second_period %>
+  </div>
+
+  <div>
+    <%= form.label :transaction_type, style: "display: block" %>
+    <%= form.select :transaction_type, Operation.transaction_types.keys %>
+  </div>
+
+  <div>
+    <%= form.label :category_id, style: "display: block" %>
+    <%= form.select :category_id, Category.pluck("name", "id") %>
+  </div>
+
+
+
+<%end %>

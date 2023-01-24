@@ -17,6 +17,7 @@ class OperationsController < ApplicationController
 
   # GET /operations/1/edit
   def edit
+
   end
 
   # POST /operations or /operations.json
@@ -65,6 +66,6 @@ class OperationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def operation_params
-      params.require(:operation).permit(:amount, :odate, :description, :category_id)
+      params.require(:operation).permit(:amount, :odate, :transaction_type, :description, :category_id)
     end
 end

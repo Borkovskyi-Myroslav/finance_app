@@ -1,0 +1,4 @@
+class Report < ApplicationRecord
+
+
+end
