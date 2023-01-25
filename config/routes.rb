@@ -10,17 +10,28 @@ Rails.application.routes.draw do
   #
   # get 'mains/index'
   # get 'mains/index', to: 'mains#index'
-  
+
+  resources :reports, only: [:index] do
+    collection do
+    get :analytics
+    end
+  end
+
   resources :operations
   resources :categories
   resources :mains
 
-  resources :reports, only: [:index] do
-    collection do
-      get :report_by_category
-      get :report_by_dates
-    end
-  end
+
+  # resources :reports, only: [:index] do
+  #   collection do
+  #     get :report_by_category
+  #     get :report_by_dates
+  #     get :analytics
+  #   end
+  # end
+  #
+
+
 
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

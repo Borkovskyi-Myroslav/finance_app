@@ -1,14 +1,14 @@
-<%= form_with(model: report) do |form| %>
-
+<%#= form_with(model: report) do |form| %>
+<%= form_with url: "reports/analytics", method: :get  do |form| %> <%# dont understand url: "/analytics", update to url: "reports/analytics"  %>
 
   <div>
-    <%= form.label :first_period, "Period from" %>
-    <%= form.date_field :first_period %>
+    <%= form.label :start_date, "Period from" %>
+    <%= form.date_field :start_date %>
   </div>
 
   <div>
-    <%= form.label :second_period, "Period to" %>
-    <%= form.date_field :second_period %>
+    <%= form.label :end_date, "Period to" %>
+    <%= form.date_field :end_date %>
   </div>
 
   <div>
@@ -18,9 +18,21 @@
 
   <div>
     <%= form.label :category_id, style: "display: block" %>
-    <%= form.select :category_id, Category.pluck("name", "id") %>
+    <%= form.select :category_id, Category.pluck("name", "id") %> <%# не пішло з тим мульти селектом %>
   </div>
 
+  <br>
 
+  <div>
+    <button><%= link_to "Clear", reports_path %></button>
+<!--    <button><%#= link_to "By Graph", report_by_category_reports_path %></button> why don`t work-->
+<!--    <button><%#= link_to "By Dates", report_by_dates_reports_path %></button> don`t work-->
+  </div>
+
+  <br>
+
+  <div>
+    <%= form.submit "By Date" %>
+  </div>
 
 <%end %>
