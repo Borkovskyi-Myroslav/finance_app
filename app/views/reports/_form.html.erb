@@ -1,7 +1,7 @@
 <%#= form_with(model: report) do |form| %>
-<%= form_with url: "reports/analytics", method: :get  do |form| %> <%# dont understand url: "/analytics", update to url: "reports/analytics"  %>
-
-  <div>
+<%#= form_with url: "reports/analytics", method: :get  do |form| %> <%# dont understand url: "/analytics", update to url: "reports/analytics"  %>
+  <%= form_with url: analytics_reports_path, method: :get  do |form| %>
+    <div>
     <%= form.label :start_date, "Period from" %>
     <%= form.date_field :start_date %>
   </div>
@@ -18,7 +18,7 @@
 
   <div>
     <%= form.label :category_id, style: "display: block" %>
-    <%= form.select :category_id, Category.pluck("name", "id") %> <%# не пішло з тим мульти селектом %>
+    <%= form.select :category_id, Category.pluck("name", "id") %>
   </div>
 
   <br>
@@ -32,7 +32,8 @@
   <br>
 
   <div>
-    <%= form.submit "By Date" %>
+    <%= form.submit "By Date", class: "btn btn-primary" %>
+    <%= form.submit "By Category", class: "btn btn-default" %>
   </div>
 
 <%end %>

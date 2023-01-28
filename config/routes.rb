@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :reports, only: [:index] do
     collection do
-    get :analytics
+      get :analytics
     end
   end
 
