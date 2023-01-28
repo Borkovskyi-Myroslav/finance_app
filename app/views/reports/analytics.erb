@@ -12,11 +12,6 @@
 %>
 
 
-
-<button><%= link_to "Back", reports_path %></button>
-
-
-
 <table>
   <% @records.each do |record| %>
   <tr>
@@ -35,6 +30,10 @@
   <% end %>
 
   </table>
+
+<br>
+
+<button><%= link_to "Back", reports_path %></button>
 
 
 
