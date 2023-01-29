@@ -1,35 +1,40 @@
 <h1>Reports#analytics</h1>
 
-<%
-  if params[:commit] == "By Date"
+
+  <%if params[:commit] == "By Date"%>
+
+      you chose By Date
+      <%# render '/reports/analytics/by_dates.html.slim'%>
+
+  <%elsif params[:commit] == "By Category" %>
+
+      you chose By Category
+      <%# render '/reports/analytics/by_category.html.slim' %>
+
+  <% end%>
 
 
-    #render '/reports/analytics/by_dates.html.slim'
-  elsif params[:commit] == "By Category"
-    #render '/reports/analytics/by_category.html.slim'
-  end
-
-%>
-
+<br>
+<br>
+<br>
 
 <table>
   <% @records.each do |record| %>
-  <tr>
-    <td> <%= record.category.name %></td>
-  </tr>
+
+    <tr>
+      <td> <%= record.category.name %></td>
+    </tr>
 
     <tr>
       <td> <%= record.transaction_type %></td>
     </tr>
 
-<!--    <tr>-->
-<!--      <td> <%#= record.end_date %></td>-->
-<!--    </tr>-->
-
-
   <% end %>
 
   </table>
+
+
+
 
 <br>
 
