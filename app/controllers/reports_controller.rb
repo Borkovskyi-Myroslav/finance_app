@@ -19,12 +19,8 @@ class ReportsController < ApplicationController
     @records = @records.where(category_id: params[:category_id]) if params[:category_id].present?
     @records = @records.where('created_at >= ?', params[:start_date]) if params[:start_date].present?
     @records = @records.where('created_at <= ?', params[:end_date]) if params[:end_date].present?
-
-
-    #params.permit(end_date:[])
-    #end_date: params[:end_date]
-    #@records = @records.where(end_date: params[:end_date]) if params[:end_date].present?
-    #params [:start_date]
+    @end_date = params[:end_date]
+    @start_date = params[:start_date]
 
   end
 

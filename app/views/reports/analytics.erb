@@ -1,40 +1,110 @@
 <h1>Reports#analytics</h1>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <%if params[:commit] == "By Date"%>
+  <h1>Reports#By Date</h1>
+  <!--Period-->
+  <%= @start_date %>
+  you chose By Date in period
+  <%= @end_date %>
 
-      you chose By Date
-      <%# render '/reports/analytics/by_dates.html.slim'%>
+  <div>
+    <canvas id="myChart" width="400" height="400"></canvas>
+  </div>
+  <script>
+      const ctx = document.getElementById('myChart');
+      const data = {
+          labels: [1,2,3,4,5,6],
+          datasets: [{
+              label: 'By Date',
+              data: [10,40,30,25,50,22],
+              fill: false,
+              borderColor: 'rgb(75, 192, 192)',
+              tension: 0.1
+          }]
+      };
 
-  <%elsif params[:commit] == "By Category" %>
+      const config = {
+          type: 'line',
+          data: data,
+          options: {
+              responsive: false
+          }
+      };
 
-      you chose By Category
-      <%# render '/reports/analytics/by_category.html.slim' %>
-
-  <% end%>
-
-
-<br>
-<br>
-<br>
-
-<table>
-  <% @records.each do |record| %>
-
-    <tr>
-      <td> <%= record.category.name %></td>
-    </tr>
-
-    <tr>
-      <td> <%= record.transaction_type %></td>
-    </tr>
-
-  <% end %>
-
+      const myChart = new Chart(ctx, config);
+  </script>
+  <br>
+  <!--Table-->
+  <table >
+    <% @records.each do |record| %>
+      <tr>
+        <th style="border: 1px solid">Date</th>
+        <th style="border: 1px solid">Type</th>
+      </tr>
+      <tr>
+        <td style="border: 1px solid"> <%= record.odate %></td>
+        <td style="border: 1px solid"> <%= record.transaction_type %></td>
+      </tr>
+    <% end %>
   </table>
 
+  <%elsif params[:commit] == "By Category" %>
+  <h1>Reports#By Category</h1>
+  <!--Period-->
+  <%= @start_date %>
+  you chose By Category in period
+  <%= @end_date %>
 
+  <div>
+    <canvas id="myChart" width="400" height="400"></canvas>
+  </div>
+  <script>
+      const ctx = document.getElementById('myChart');
+      const data = {
+          labels: [
+              'Red',
+              'Blue',
+              'Yellow'
+          ],
+          datasets: [{
+              label: 'By Category',
+              data: [100, 450, 50],
+              backgroundColor: [
+                  'rgb(255, 99, 132)',
+                  'rgb(54, 162, 235)',
+                  'rgb(255, 205, 86)'
+              ],
+              hoverOffset: 4
+          }]
+      };
 
+      const config = {
+          type: 'pie',
+          data: data,
+          options: {
+              responsive: false
+          }
+      };
+
+      const myChart = new Chart(ctx, config);
+  </script>
+  <br>
+  <!--Table-->
+  <table >
+    <% @records.each do |record| %>
+      <tr>
+        <th style="border: 1px solid">Category</th>
+        <th style="border: 1px solid">Type</th>
+      </tr>
+      <tr>
+        <td style="border: 1px solid"> <%= record.category.name %></td>
+        <td style="border: 1px solid"> <%= record.transaction_type %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <% end%>
 
 <br>
 
