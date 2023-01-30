@@ -1,12 +1,11 @@
-<h1>Reports#analytics</h1>
+<!--<h1>Reports#analytics</h1>-->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <%if params[:commit] == "By Date"%>
   <h1>Reports#By Date</h1>
   <!--Period-->
-  <%= @start_date %>
-  you chose By Date in period
-  <%= @end_date %>
+
+  you chose By Date in period from: <%= @start_date %> to  <%= @end_date %>
 
   <div>
     <canvas id="myChart" width="400" height="400"></canvas>
@@ -35,16 +34,19 @@
       const myChart = new Chart(ctx, config);
   </script>
   <br>
-  <!--Table-->
+  <!--Table by dates-->
   <table >
     <% @records.each do |record| %>
       <tr>
         <th style="border: 1px solid">Date</th>
         <th style="border: 1px solid">Type</th>
+        <th style="border: 1px solid">Summ</th>
       </tr>
       <tr>
         <td style="border: 1px solid"> <%= record.odate %></td>
         <td style="border: 1px solid"> <%= record.transaction_type %></td>
+        <td style="border: 1px solid"> <%= record.amount %></td>
+        amount
       </tr>
     <% end %>
   </table>
@@ -52,28 +54,25 @@
   <%elsif params[:commit] == "By Category" %>
   <h1>Reports#By Category</h1>
   <!--Period-->
-  <%= @start_date %>
-  you chose By Category in period
-  <%= @end_date %>
+
+  you chose By Category in period from: <%= @start_date %> to  <%= @end_date %> </n>
+  Cat position: <%= @cat_posicions  %>
 
   <div>
-    <canvas id="myChart" width="400" height="400"></canvas>
+    <canvas id="myChart" width="600" height="600"></canvas>
   </div>
   <script>
       const ctx = document.getElementById('myChart');
       const data = {
-          labels: [
-              'Red',
-              'Blue',
-              'Yellow'
-          ],
+          labels: <%= raw @cat_data %>,
           datasets: [{
               label: 'By Category',
               data: [100, 450, 50],
               backgroundColor: [
                   'rgb(255, 99, 132)',
                   'rgb(54, 162, 235)',
-                  'rgb(255, 205, 86)'
+                  'rgb(255, 205, 86)',
+                  'rgb(555, 305, 126)'
               ],
               hoverOffset: 4
           }]
@@ -90,16 +89,18 @@
       const myChart = new Chart(ctx, config);
   </script>
   <br>
-  <!--Table-->
+  <!--Table-by categories-->
   <table >
-    <% @records.each do |record| %>
+    <% @records.map do |record| %>
       <tr>
         <th style="border: 1px solid">Category</th>
         <th style="border: 1px solid">Type</th>
+        <th style="border: 1px solid">Summ</th>
       </tr>
       <tr>
         <td style="border: 1px solid"> <%= record.category.name %></td>
         <td style="border: 1px solid"> <%= record.transaction_type %></td>
+        <td style="border: 1px solid"> <%= record.amount %></td>
       </tr>
     <% end %>
   </table>

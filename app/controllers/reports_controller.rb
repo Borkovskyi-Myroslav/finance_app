@@ -11,7 +11,7 @@ class ReportsController < ApplicationController
   #   puts (params)
   # end
 
-  # don`t understand what I do
+
   def analytics
 
     @records = Operation.all
@@ -21,6 +21,9 @@ class ReportsController < ApplicationController
     @records = @records.where('created_at <= ?', params[:end_date]) if params[:end_date].present?
     @end_date = params[:end_date]
     @start_date = params[:start_date]
+
+    @cat_data = Category.pluck("name")
+    @cat_posicions = Category.pluck("name")[0]
 
   end
 
@@ -36,10 +39,6 @@ class ReportsController < ApplicationController
     params[:comite]  == "By Category"
   end
 
-  # need it?
-  # def record_params
-  #   params.require(:record).permit(:start_date, :end_date, :transaction_type, :category_id)
-  # end
 
 
 end
