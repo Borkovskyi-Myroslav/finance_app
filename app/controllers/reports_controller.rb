@@ -1,7 +1,6 @@
 class ReportsController < ApplicationController
 
   def index
-
   end
 
   # def report_by_category
@@ -20,15 +19,12 @@ class ReportsController < ApplicationController
     @records = @records.where(category_id: params[:category_id]) if params[:category_id].present?
     @records = @records.where('created_at >= ?', params[:start_date]) if params[:start_date].present?
     @records = @records.where('created_at <= ?', params[:end_date]) if params[:end_date].present?
+    @end_date = params[:end_date]
+    @start_date = params[:start_date]
 
-
-    #end_date: params[:end_date]
-    #@records = @records.where(start_date: params[:start_date]) if params[:start_date].present?
-    #params [:start_date]
-    #fetch recors by parameters: operations = Operation.where(transaction_type: (params[:transaction_type]))
-    #fetch recors by parameters: report = Operation.where('created_at >=?'params{:start_date}) counfused me!!
-    #fetch recors by parameters: category = Category.where(category_id: (params[:category_id]))
   end
+
+
 
   private
 
@@ -41,8 +37,9 @@ class ReportsController < ApplicationController
   end
 
   # need it?
-  def report_params
-    params.require(:report).permit(:start_date, :end_date, :transaction_type, :category_id)
-  end
+  # def record_params
+  #   params.require(:record).permit(:start_date, :end_date, :transaction_type, :category_id)
+  # end
+
 
 end

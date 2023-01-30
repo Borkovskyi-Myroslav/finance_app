@@ -24,7 +24,7 @@
   <br>
 
   <div>
-    <button><%= link_to "Clear", reports_path %></button>
+    <button type="button" class="btn btn-outline-danger"><%= link_to "Clear",  reports_path %></button>
 <!--    <button><%#= link_to "By Graph", report_by_category_reports_path %></button> why don`t work-->
 <!--    <button><%#= link_to "By Dates", report_by_dates_reports_path %></button> don`t work-->
   </div>
@@ -32,8 +32,8 @@
   <br>
 
   <div>
-    <%= form.submit "By Date", class: "btn btn-primary" %>
-    <%= form.submit "By Category", class: "btn btn-default" %>
+    <%= form.submit "By Date", class: "btn btn-outline-primary" %>
+    <%= form.submit "By Category", class: "btn btn-outline-success" %>
   </div>
 
 <%end %>
