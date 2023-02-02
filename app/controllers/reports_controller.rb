@@ -22,8 +22,13 @@ class ReportsController < ApplicationController
     @end_date = params[:end_date]
     @start_date = params[:start_date]
 
-    @cat_data = Category.pluck("name")
-    @cat_posicions = Category.pluck("name")[0]
+
+    @cat_names = Category
+    #@dat_sums = Operation.group("category_id").sum("amount").values
+    @cat_sums = Operation.all
+
+
+
 
   end
 
