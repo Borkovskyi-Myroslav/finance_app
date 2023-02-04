@@ -1,4 +1,3 @@
-
 <!--<h1>Reports#analytics</h1>-->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -6,7 +5,14 @@
   <h1>Reports#By Date</h1>
   <!--Period-->
 
-  you chose By Date in period from: <%= @start_date %> to  <%= @end_date %>
+  you chose Report "By Date" in period from: <%= @start_date %> to  <%= @end_date %><br>
+
+  <p>
+    <strong>Transaction type:</strong>
+    <%= @trans_type %>
+
+  </p>
+  <br>
 
   <div>
     <canvas id="myChart" width="400" height="400"></canvas>
@@ -14,12 +20,12 @@
   <script>
       const ctx = document.getElementById('myChart');
       const data = {
-          labels: [1,2,3,4,5,6],
+          labels: <%= raw @dat_dat %>,
           datasets: [{
               label: 'By Date',
-              data: [10,40,30,25,50,22],
+              data: <%= @dat_sum %>,
               fill: false,
-              borderColor: 'rgb(75, 192, 192)',
+              borderColor: 'rgb(24,31,31)',
               tension: 0.1
           }]
       };
@@ -35,29 +41,21 @@
       const myChart = new Chart(ctx, config);
   </script>
   <br>
-  <!--Table by dates-->
-  <table >
 
-      <tr>
-        <th style="border: 1px solid">Date</th>
-        <th style="border: 1px solid">Type</th>
-        <th style="border: 1px solid">Summ</th>
-      </tr>
-    <% @records.each do |record| %>
-      <tr>
-        <td style="border: 1px solid"> <%= record.odate %></td>
-        <td style="border: 1px solid"> <%= record.transaction_type %></td>
-        <td style="border: 1px solid"> <%= record.amount %></td>
-        amount
-      </tr>
-    <% end %>
-  </table>
 
 <%elsif params[:commit] == "By Category" %>
   <h1>Reports#By Category</h1>
   <!--Period-->
 
-  you chose By Category in period from: <%= @start_date %> to  <%= @end_date %>
+  you chose report "By Category" in period from: <%= @start_date %> to  <%= @end_date %>
+
+  <p>
+    <strong>Transaction type:</strong>
+    <%= @trans_type %>
+  </p>
+  <br>
+
+
 
 
   <div>
@@ -66,20 +64,20 @@
   <script>
       const ctx = document.getElementById('myChart');
       const data = {
-          labels: <%= raw @cat_names.pluck("name") %>,
+          labels: <%= raw @cat_names %>,
           datasets: [{
               label: 'By Category',
-              data: <%= @cat_sums.group("category_id").sum("amount").values %>,
+              data: <%= raw @cat_sums %>,
               backgroundColor: [
                   'rgb(255, 99, 132)',
                   'rgb(54, 162, 235)',
                   'rgb(255, 205, 86)',
                   'rgb(555, 305, 126)',
-                  'rgb(755, 305, 126)',
+                  'rgb(755, 105, 726)',
                   'rgb(355, 305, 126)',
-                  'rgb(665, 305, 126)',
+                  'rgb(50,88,191)',
                   'rgb(125, 305, 126)',
-                  'rgb(632, 305, 126)'
+                  'rgb(9,193,229)'
               ],
               hoverOffset: 4
           }]
@@ -106,7 +104,6 @@
 
 <br>
 
-<button><%= link_to "Back", reports_path %></button>
-
+<button><%= link_to "Back", reports_path  %></button>
 
 

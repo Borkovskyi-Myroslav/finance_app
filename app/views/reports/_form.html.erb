@@ -1,5 +1,4 @@
-<%#= form_with(model: report) do |form| %>
-<%#= form_with url: "reports/analytics", method: :get  do |form| %> <%# dont understand url: "/analytics", update to url: "reports/analytics"  %>
+
   <%= form_with url: analytics_reports_path, method: :get  do |form| %>
     <div>
     <%= form.label :start_date, "Period from" %>
@@ -16,20 +15,13 @@
     <%= form.select :transaction_type, Operation.transaction_types.keys %>
   </div>
 
-  <div>
-    <%= form.label :category_id, style: "display: block" %>
-    <%= form.select :category_id, Category.pluck("name", "id") %>
-  </div>
+<!--  <div>-->
+    <%#= form.label :category_id, style: "display: block" %>
+    <%#= form.select :category_id, Category.pluck("name", "id") %>
+<!--  </div>-->
 
   <br>
 
-  <div>
-    <button type="button" class="btn btn-outline-danger"><%= link_to "Clear",  reports_path %></button>
-<!--    <button><%#= link_to "By Graph", report_by_category_reports_path %></button> why don`t work-->
-<!--    <button><%#= link_to "By Dates", report_by_dates_reports_path %></button> don`t work-->
-  </div>
-
-  <br>
 
   <div>
     <%= form.submit "By Date", class: "btn btn-outline-primary" %>
