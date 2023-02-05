@@ -22,6 +22,7 @@ class ReportsController < ApplicationController
     @end_date = params[:end_date]
     @start_date = params[:start_date]
     @trans_type = params[:transaction_type]
+    @datus = params[:odate]
 
 
     # Report by Category

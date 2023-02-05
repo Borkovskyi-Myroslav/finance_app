@@ -1,11 +1,21 @@
 <!--<h1>Reports#analytics</h1>-->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<%if params[:commit] == "By Date"%>
-  <h1>Reports#By Date</h1>
-  <!--Period-->
+<script type='text/javascript'>
+    (function(){
+        if(!sessionStorage.getItem('firstLoad')){
+            sessionStorage['firstLoad'] = true;
+            window.location.reload();
+        }else{
+            sessionStorage.removeItem('firstLoad');
+        }})();
+</script>
 
-  you chose Report "By Date" in period from: <%= @start_date %> to  <%= @end_date %><br>
+<%if params[:commit] == "By Date"%>
+  <h1>You chose Report "By Date" in period from: <%= @start_date %> to  <%= @end_date %></h1>
+
+
+
 
   <p>
     <strong>Transaction type:</strong>
@@ -42,12 +52,28 @@
   </script>
   <br>
 
+  <!--Table-by dates-->
+  <table >
+    <tr>
+      <th style="border: 1px solid">Date</th>
+      <th style="border: 1px solid">Summ</th>
+      <th style="border: 1px solid">Type</th>
+    </tr>
+    <% @by_dat.map do |date, summ| %>
+      <tr>
+        <td style="border: 1px solid"> <%= date %></td>
+        <td style="border: 1px solid"> <%= summ %></td>
+        <td style="border: 1px solid"> <%= @trans_type %></td>
+      </tr>
+    <% end %>
+
+  </table>
+
 
 <%elsif params[:commit] == "By Category" %>
-  <h1>Reports#By Category</h1>
+  <h1>You chose report "By Category" in period from: <%= @start_date %> to  <%= @end_date %></h1>
   <!--Period-->
 
-  you chose report "By Category" in period from: <%= @start_date %> to  <%= @end_date %>
 
   <p>
     <strong>Transaction type:</strong>
@@ -95,15 +121,28 @@
   </script>
   <br>
 
+  <!--Table-by categories-->
+  <table >
+    <tr>
+      <th style="border: 1px solid">Category</th>
+      <th style="border: 1px solid">Summ</th>
+      <th style="border: 1px solid">Type</th>
+    </tr>
+    <% @by_cat.map do |name, summ| %>
+      <tr>
+        <td style="border: 1px solid"> <%= name %></td>
+        <td style="border: 1px solid"> <%= summ %></td>
+        <td style="border: 1px solid"> <%= @trans_type %></td>
+      </tr>
+    <% end %>
 
-
-
+  </table>
 
 
 <% end%>
 
+
 <br>
 
 <button><%= link_to "Back", reports_path  %></button>
-
 
