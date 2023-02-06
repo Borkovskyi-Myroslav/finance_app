@@ -1,55 +1,16 @@
-<!--<h1>Reports#analytics</h1>-->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script type='text/javascript'>
-    (function(){
-        if(!sessionStorage.getItem('firstLoad')){
-            sessionStorage['firstLoad'] = true;
-            window.location.reload();
-        }else{
-            sessionStorage.removeItem('firstLoad');
-        }})();
-</script>
 
 <%if params[:commit] == "By Date"%>
-  <h1>You chose Report "By Date" in period from: <%= @start_date %> to  <%= @end_date %></h1>
-
-
-
+  <h1>You chose Report "By Date" in period from: <%= params[:start_date] %> to  <%= params[:end_date] %></h1>
 
   <p>
     <strong>Transaction type:</strong>
-    <%= @trans_type %>
+    <%= params[:transaction_type] %>
 
   </p>
   <br>
 
-  <div>
-    <canvas id="myChart" width="400" height="400"></canvas>
-  </div>
-  <script>
-      const ctx = document.getElementById('myChart');
-      const data = {
-          labels: <%= raw @dat_dat %>,
-          datasets: [{
-              label: 'By Date',
-              data: <%= @dat_sum %>,
-              fill: false,
-              borderColor: 'rgb(24,31,31)',
-              tension: 0.1
-          }]
-      };
+  <%= area_chart @by_date, label: 'Graph By Dates', xtitle: 'Date', ytitle: 'Amount', height: '500px', legend: true, library: {animation: { duration: 600 }} %>
 
-      const config = {
-          type: 'line',
-          data: data,
-          options: {
-              responsive: false
-          }
-      };
-
-      const myChart = new Chart(ctx, config);
-  </script>
   <br>
 
   <!--Table-by dates-->
@@ -59,11 +20,11 @@
       <th style="border: 1px solid">Summ</th>
       <th style="border: 1px solid">Type</th>
     </tr>
-    <% @by_dat.map do |date, summ| %>
+    <% @by_date.map do |date, summ| %>
       <tr>
         <td style="border: 1px solid"> <%= date %></td>
         <td style="border: 1px solid"> <%= summ %></td>
-        <td style="border: 1px solid"> <%= @trans_type %></td>
+        <td style="border: 1px solid"> <%= params[:transaction_type] %></td>
       </tr>
     <% end %>
 
@@ -71,54 +32,16 @@
 
 
 <%elsif params[:commit] == "By Category" %>
-  <h1>You chose report "By Category" in period from: <%= @start_date %> to  <%= @end_date %></h1>
-  <!--Period-->
 
+  <h1>You chose report "By Category" in period from: <%= params[:start_date] %> to  <%= params[:end_date] %></h1>
 
   <p>
     <strong>Transaction type:</strong>
-    <%= @trans_type %>
+    <%= params[:transaction_type] %>
   </p>
   <br>
 
-
-
-
-  <div>
-    <canvas id="myChart" width="600" height="600"></canvas>
-  </div>
-  <script>
-      const ctx = document.getElementById('myChart');
-      const data = {
-          labels: <%= raw @cat_names %>,
-          datasets: [{
-              label: 'By Category',
-              data: <%= raw @cat_sums %>,
-              backgroundColor: [
-                  'rgb(255, 99, 132)',
-                  'rgb(54, 162, 235)',
-                  'rgb(255, 205, 86)',
-                  'rgb(555, 305, 126)',
-                  'rgb(755, 105, 726)',
-                  'rgb(355, 305, 126)',
-                  'rgb(50,88,191)',
-                  'rgb(125, 305, 126)',
-                  'rgb(9,193,229)'
-              ],
-              hoverOffset: 4
-          }]
-      };
-
-      const config = {
-          type: 'pie',
-          data: data,
-          options: {
-              responsive: false
-          }
-      };
-
-      const myChart = new Chart(ctx, config);
-  </script>
+  <%= pie_chart @by_category,  height: "500px", library: {animation: { duration: 600 }} %>
   <br>
 
   <!--Table-by categories-->
@@ -128,11 +51,12 @@
       <th style="border: 1px solid">Summ</th>
       <th style="border: 1px solid">Type</th>
     </tr>
-    <% @by_cat.map do |name, summ| %>
+
+    <% @by_category.map do |name, summ| %>
       <tr>
         <td style="border: 1px solid"> <%= name %></td>
         <td style="border: 1px solid"> <%= summ %></td>
-        <td style="border: 1px solid"> <%= @trans_type %></td>
+        <td style="border: 1px solid"> <%= params[:transaction_type] %></td>
       </tr>
     <% end %>
 
@@ -140,7 +64,6 @@
 
 
 <% end%>
-
 
 <br>
 
