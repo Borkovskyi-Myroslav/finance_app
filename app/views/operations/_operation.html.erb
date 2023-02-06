@@ -3,7 +3,11 @@
   <p>
     <strong>Category:</strong>
     <%= link_to(operation.category.name, category_path(operation.category_id)) %>
-    <%#= link_to(operation.category.name) %>
+  </p>
+
+  <p>
+    <strong>Category id:</strong>
+    <%= operation.category.id %>
   </p>
 
   <p>
@@ -18,8 +22,8 @@
 
 
   <p>
-    <strong>Odate:</strong>
-    <%= operation.odate %>
+    <strong>Date:</strong>
+    <%= operation.odate.strftime("%d-%m-%Y") %>
   </p>
 
   <p>

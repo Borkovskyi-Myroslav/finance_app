@@ -1,116 +1,71 @@
-<h1>Reports#analytics</h1>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <%if params[:commit] == "By Date"%>
-  <h1>Reports#By Date</h1>
-  <!--Period-->
-  <%= @start_date %>
-  you chose By Date in period
-  <%= @end_date %>
+<%if params[:commit] == "By Date"%>
+  <h1>You chose Report "By Date" in period from: <%= params[:start_date] %> to  <%= params[:end_date] %></h1>
 
-  <div>
-    <canvas id="myChart" width="400" height="400"></canvas>
-  </div>
-  <script>
-      const ctx = document.getElementById('myChart');
-      const data = {
-          labels: [1,2,3,4,5,6],
-          datasets: [{
-              label: 'By Date',
-              data: [10,40,30,25,50,22],
-              fill: false,
-              borderColor: 'rgb(75, 192, 192)',
-              tension: 0.1
-          }]
-      };
+  <p>
+    <strong>Transaction type:</strong>
+    <%= params[:transaction_type] %>
 
-      const config = {
-          type: 'line',
-          data: data,
-          options: {
-              responsive: false
-          }
-      };
-
-      const myChart = new Chart(ctx, config);
-  </script>
+  </p>
   <br>
-  <!--Table-->
+
+  <%= area_chart @by_date, label: 'Graph By Dates', xtitle: 'Date', ytitle: 'Amount', height: '500px', legend: true, library: {animation: { duration: 600 }} %>
+
+  <br>
+
+  <!--Table-by dates-->
   <table >
-    <% @records.each do |record| %>
+    <tr>
+      <th style="border: 1px solid">Date</th>
+      <th style="border: 1px solid">Summ</th>
+      <th style="border: 1px solid">Type</th>
+    </tr>
+    <% @by_date.map do |date, summ| %>
       <tr>
-        <th style="border: 1px solid">Date</th>
-        <th style="border: 1px solid">Type</th>
-      </tr>
-      <tr>
-        <td style="border: 1px solid"> <%= record.odate %></td>
-        <td style="border: 1px solid"> <%= record.transaction_type %></td>
+        <td style="border: 1px solid"> <%= date %></td>
+        <td style="border: 1px solid"> <%= summ %></td>
+        <td style="border: 1px solid"> <%= params[:transaction_type] %></td>
       </tr>
     <% end %>
+
   </table>
 
-  <%elsif params[:commit] == "By Category" %>
-  <h1>Reports#By Category</h1>
-  <!--Period-->
-  <%= @start_date %>
-  you chose By Category in period
-  <%= @end_date %>
 
-  <div>
-    <canvas id="myChart" width="400" height="400"></canvas>
-  </div>
-  <script>
-      const ctx = document.getElementById('myChart');
-      const data = {
-          labels: [
-              'Red',
-              'Blue',
-              'Yellow'
-          ],
-          datasets: [{
-              label: 'By Category',
-              data: [100, 450, 50],
-              backgroundColor: [
-                  'rgb(255, 99, 132)',
-                  'rgb(54, 162, 235)',
-                  'rgb(255, 205, 86)'
-              ],
-              hoverOffset: 4
-          }]
-      };
+<%elsif params[:commit] == "By Category" %>
 
-      const config = {
-          type: 'pie',
-          data: data,
-          options: {
-              responsive: false
-          }
-      };
+  <h1>You chose report "By Category" in period from: <%= params[:start_date] %> to  <%= params[:end_date] %></h1>
 
-      const myChart = new Chart(ctx, config);
-  </script>
+  <p>
+    <strong>Transaction type:</strong>
+    <%= params[:transaction_type] %>
+  </p>
   <br>
-  <!--Table-->
+
+  <%= pie_chart @by_category,  height: "500px", library: {animation: { duration: 600 }} %>
+  <br>
+
+  <!--Table-by categories-->
   <table >
-    <% @records.each do |record| %>
+    <tr>
+      <th style="border: 1px solid">Category</th>
+      <th style="border: 1px solid">Summ</th>
+      <th style="border: 1px solid">Type</th>
+    </tr>
+
+    <% @by_category.map do |name, summ| %>
       <tr>
-        <th style="border: 1px solid">Category</th>
-        <th style="border: 1px solid">Type</th>
-      </tr>
-      <tr>
-        <td style="border: 1px solid"> <%= record.category.name %></td>
-        <td style="border: 1px solid"> <%= record.transaction_type %></td>
+        <td style="border: 1px solid"> <%= name %></td>
+        <td style="border: 1px solid"> <%= summ %></td>
+        <td style="border: 1px solid"> <%= params[:transaction_type] %></td>
       </tr>
     <% end %>
+
   </table>
 
-  <% end%>
+
+<% end%>
 
 <br>
 
-<button><%= link_to "Back", reports_path %></button>
-
-
-
-
+<button><%= link_to "Back", reports_path  %></button>
 

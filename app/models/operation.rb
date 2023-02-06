@@ -1,7 +1,7 @@
 class Operation < ApplicationRecord
   belongs_to :category
 
-  paginates_per 2
+  paginates_per 5
 
   enum transaction_type: { costs: 0, income: 10 }
 
