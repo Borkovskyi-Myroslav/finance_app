@@ -54,7 +54,7 @@ group :development, :test do
 end
 
 gem 'kaminari'
-
+gem 'faker'
 gem "chartkick"
 
 group :development do
