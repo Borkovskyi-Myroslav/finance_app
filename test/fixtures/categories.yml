@@ -1,9 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyString
 
-two:
-  name: MyString
-  description: MyString
+
+medicine:
+  name: medicine
+  description: medicine_description
+
+category_1:
+  name: category_1
+  description: 1st_description
+
+3st_Category:
+  name: 3st_Category
+  description: 3st_description
+
+2st_Category:
+  name: 2st_Category
+  description: 2st_description

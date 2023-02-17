@@ -1,13 +1,58 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+
+
+
 one:
-  amount: 9.99
-  odate: 2023-01-13 18:49:07
-  description: MyString
-  category: one
+  amount: 14.5
+  odate: 2023-01-14 18:50:00
+  description: 1st_Descriptions
+  category: category_1
+  transaction_type: 10
 
 two:
-  amount: 9.99
-  odate: 2023-01-13 18:49:07
-  description: MyString
-  category: two
+  amount: 5.0
+  odate: 2023-01-14 18:50:00
+  description: Test description
+  category: 3st_Category
+  transaction_type: 0
+
+
+three:
+  amount: 10.0
+  odate: 2023-01-13 18:50:00
+  description: 2st_description
+  category: medicine
+  transaction_type: 0
+
+
+four:
+  amount: 15.0
+  odate: 2023-01-12 18:50:00
+  description: Medicine description 2
+  category: medicine
+  transaction_type: 0
+
+
+five:
+  amount: 10.5
+  odate: 2023-01-13 18:50:00
+  description: 4st_description
+  category: 2st_Category
+  transaction_type: 0
+
+six:
+  amount: 19.5
+  odate: 2023-01-12 18:50:00
+  description: 2st_description
+  category: 2st_Category
+  transaction_type: 0
+
+
+
+seven:
+  amount: 10.0
+  odate: 2023-01-18 18:49:07
+  description: 2st_description
+  category: medicine
+  transaction_type: 0 #(0-casts, 10-income)

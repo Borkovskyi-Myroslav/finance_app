@@ -3,15 +3,6 @@ class ReportsController < ApplicationController
   def index
   end
 
-  # def report_by_category
-  #   puts (params)
-  # end
-
-  # def report_by_dates
-  #   puts (params)
-  # end
-
-
   def analytics
 
     @records = Operation.all
@@ -24,14 +15,12 @@ class ReportsController < ApplicationController
     @by_category = @records.joins(:category).group('categories.name').sum("amount")
 
     #Report by Date
-    @by_date = @records.group("strftime('%d-%m-%Y', odate)").sum("amount")
+    @by_date = @records.group("strftime('%m-%d-%Y', odate)").sum("amount")
 
   end
 
 
-
   private
-
   def by_date?
     params[:comite]  == "By Date"
   end
@@ -39,7 +28,5 @@ class ReportsController < ApplicationController
   def by_category?
     params[:comite]  == "By Category"
   end
-
-
 
 end
