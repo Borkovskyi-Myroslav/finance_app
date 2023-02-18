@@ -5,7 +5,8 @@ class Operation < ApplicationRecord
 
   enum transaction_type: { costs: 0, income: 10 }
 
-  scope :by_dates, ->(start, the_end) { where('odate BETWEEN ? AND ?', start, the_end)   }
+
+  scope :by_dates, ->(start, the_end) { where('odate BETWEEN ? AND ?', start, the_end) if start.present? && the_end.present? }
   scope :by_category, ->(test_category) {joins(:category).where(category: test_category) if test_category.present? }
 
 
