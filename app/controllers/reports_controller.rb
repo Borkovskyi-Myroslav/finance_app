@@ -7,7 +7,7 @@ class ReportsController < ApplicationController
 
     @records = Operation.all
     @records = @records.where(transaction_type: params[:transaction_type]) if params[:transaction_type].present?
-    @records = @records.where(category_id: params[:category_id]) if params[:category_id].present?
+    @records = @records.by_category(params[:category_id])
     @records = @records.where('odate >= ?', params[:start_date]) if params[:start_date].present?
     @records = @records.where('odate <= ?', params[:end_date]) if params[:end_date].present?
 
@@ -16,6 +16,8 @@ class ReportsController < ApplicationController
 
     #Report by Date
     @by_date = @records.group("strftime('%m-%d-%Y', odate)").sum("amount")
+
+
 
   end
 
