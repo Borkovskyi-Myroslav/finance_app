@@ -6,11 +6,11 @@
   <% @operations.each do |operation| %>
     <%= render operation %>
     <p>
-      <%= link_to "Show this operation", operation %>
+      <%= link_to "Show this operation", operation, class: "btn btn-outline-primary" %>
     </p>
   <% end %>
 </div>
 
 <%= paginate @operations %>
 
-<%= link_to "New operation", new_operation_path %>
+<%= link_to "New operation", new_operation_path, class: "btn btn-outline-success" %>
