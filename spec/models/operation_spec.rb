@@ -66,27 +66,11 @@ RSpec.describe Operation, :type => :model do
       end
     end
 
+
+
   end
 
-  # context "with valid params " do
-  #
-  #   let(:test_category) {create(:category)}
-  #   let!(:correct_categories){create_list(:category, 1, :name => category.name)}
-  #   it 'should return correct operation' do
-  #     expect(described_class.by_category(name)).to be true
-  #     expect(category.name).to be true
-  #     .not_to be_empty
-  # end
-  # end
 
-    # context "with invalid params " do
-    #
-    #   let(:test_category) {create(:category)}
-    #   let!(:correct_operations){create_list(:operation, 3, :odate => Date.current, :category => test_category)}
-    #
-    #   it 'should return correct operation' do
-    #     expect(described_class.by_dates(start_date, end_date)).to be_empty
-    #   end
   end
 
 
