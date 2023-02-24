@@ -1,71 +1,77 @@
+<div class="container">
+  <% if params[:commit] == "By Date" %>
+    <h1>You chose Report "By Date" in period from: <%= params[:start_date] %> to  <%= params[:end_date] %></h1>
 
-<%if params[:commit] == "By Date"%>
-  <h1>You chose Report "By Date" in period from: <%= params[:start_date] %> to  <%= params[:end_date] %></h1>
+    <p>
+      <strong>Transaction type:</strong>
+      <%= params[:transaction_type] %>
+    </p>
+    <br>
 
-  <p>
-    <strong>Transaction type:</strong>
-    <%= params[:transaction_type] %>
+    <%= area_chart @by_date, label: 'Graph By Dates', xtitle: 'Date', ytitle: 'Amount', height: '500px', legend: true, library: { animation: { duration: 600 } } %>
 
-  </p>
-  <br>
+    <br>
 
-  <%= area_chart @by_date, label: 'Graph By Dates', xtitle: 'Date', ytitle: 'Amount', height: '500px', legend: true, library: {animation: { duration: 600 }} %>
-
-  <br>
-
-  <!--Table-by dates-->
-  <table >
-    <tr>
-      <th style="border: 1px solid">Date</th>
-      <th style="border: 1px solid">Summ</th>
-      <th style="border: 1px solid">Type</th>
-    </tr>
-    <% @by_date.map do |date, summ| %>
+    <!--Table-by dates-->
+    <table class="table table-striped table-hover">
       <tr>
-        <td style="border: 1px solid"> <%= date %></td>
-        <td style="border: 1px solid"> <%= summ %></td>
-        <td style="border: 1px solid"> <%= params[:transaction_type] %></td>
+        <th style="border: 1px solid">Date</th>
+        <th style="border: 1px solid">Cost</th>
+        <th style="border: 1px solid">Type</th>
+
       </tr>
-    <% end %>
+      <% @by_date.map do |date, summ| %>
+        <tr>
+          <td style="border: 1px solid"> <%= date %></td>
+          <td style="border: 1px solid"> <%= summ %></td>
+          <td style="border: 1px solid"> <%= params[:transaction_type] %></td>
+        </tr>
+      <% end %>
 
-  </table>
+    </table>
 
 
-<%elsif params[:commit] == "By Category" %>
+  <% elsif params[:commit] == "By Category" %>
 
-  <h1>You chose report "By Category" in period from: <%= params[:start_date] %> to  <%= params[:end_date] %></h1>
+    <h1>You chose report "By Category" in period from: <%= params[:start_date] %> to  <%= params[:end_date] %></h1>
 
-  <p>
-    <strong>Transaction type:</strong>
-    <%= params[:transaction_type] %>
-  </p>
-  <br>
+    <p class="text-start">
+      <strong>Transaction type:</strong>
+      <%= params[:transaction_type] %>
+    </p>
+    <br>
 
-  <%= pie_chart @by_category,  height: "500px", library: {animation: { duration: 600 }} %>
-  <br>
+    <%= pie_chart @by_category, height: "500px", library: { animation: { duration: 600 } } %>
+    <br>
 
-  <!--Table-by categories-->
-  <table >
-    <tr>
-      <th style="border: 1px solid">Category</th>
-      <th style="border: 1px solid">Summ</th>
-      <th style="border: 1px solid">Type</th>
-    </tr>
-
-    <% @by_category.map do |name, summ| %>
+    <!--Table-by categories-->
+    <table class="table table-striped table-hover">
       <tr>
-        <td style="border: 1px solid"> <%= name %></td>
-        <td style="border: 1px solid"> <%= summ %></td>
-        <td style="border: 1px solid"> <%= params[:transaction_type] %></td>
+        <th style="border: 1px solid">Category</th>
+        <th style="border: 1px solid">Summ</th>
+        <th style="border: 1px solid">Type</th>
       </tr>
-    <% end %>
 
-  </table>
+      <% @by_category.map do |name, summ| %>
+        <tr>
+          <td style="border: 1px solid"> <%= name %></td>
+          <td style="border: 1px solid"> <%= summ %></td>
+          <td style="border: 1px solid"> <%= params[:transaction_type] %></td>
+
+        </tr>
+      <% end %>
+
+    </table>
 
 
-<% end%>
+  <% end %>
 
-<br>
+  <br>
 
-<button><%= link_to "Back", reports_path  %></button>
+  <div class="row justify-content-md-center">
+    <%= link_to "Back", reports_path, class: "btn btn-outline-primary" %>
+  </div>
+  <br>
 
+
+</div>

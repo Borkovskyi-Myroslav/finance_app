@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>App</title>
+    <title>Finance App</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,9 +13,12 @@
   </head>
 
   <body>
+
+  <div class="page">
   <%= render 'shared/header' %>
     <%= yield %>
   <%= render 'shared/footer' %>
+  </div>
 
   </body>
 </html>

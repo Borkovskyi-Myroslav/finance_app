@@ -1,3 +1,4 @@
+
 <h1>Editing operation</h1>
 
 <%= render "form", operation: @operation %>
@@ -5,6 +6,7 @@
 <br>
 
 <div>
-  <%= link_to "Show this operation", @operation %> |
-  <%= link_to "Back to operations", operations_path %>
+  <%= link_to "Show this operation", @operation, class: "btn btn-outline-primary" %> |
+  <%= link_to "Back to operations", operations_path, class: "btn btn-outline-primary" %>
 </div>
+

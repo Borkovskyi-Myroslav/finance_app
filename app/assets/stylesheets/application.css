@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.page{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+footer {
+    margin-top: auto;
+    background: #cc6666;
+    width: 100%;
+}
+
+
+
+
+

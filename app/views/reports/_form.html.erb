@@ -1,31 +1,32 @@
+<div class="container">
+  <%= form_with url: analytics_reports_path, method: :get do |form| %>
+    <div class="row justify-content-md-center">
+      <%= form.label :start_date, "Period from" %>
+      <%= form.date_field :start_date %>
+    </div>
 
-  <%= form_with url: analytics_reports_path, method: :get  do |form| %>
-    <div>
-    <%= form.label :start_date, "Period from" %>
-    <%= form.date_field :start_date %>
-  </div>
+    <div class="row justify-content-md-center">
+      <%= form.label :end_date, "Period to" %>
+      <%= form.date_field :end_date %>
+    </div>
 
-  <div>
-    <%= form.label :end_date, "Period to" %>
-    <%= form.date_field :end_date %>
-  </div>
-
-  <div>
-    <%= form.label :transaction_type, style: "display: block" %>
-    <%= form.select :transaction_type, Operation.transaction_types.keys %>
-  </div>
-
-<!--  <div>-->
-    <%#= form.label :category_id, style: "display: block" %>
-    <%#= form.select :category_id, Category.pluck("name", "id") %>
-<!--  </div>-->
-
-  <br>
+    <div class="row justify-content-md-center">
+      <%= form.label :transaction_type, style: "display: block" %>
+      <%= form.select :transaction_type, Operation.transaction_types.keys %>
+    </div>
 
 
-  <div>
-    <%= form.submit "By Date", class: "btn btn-outline-primary" %>
-    <%= form.submit "By Category", class: "btn btn-outline-success" %>
-  </div>
+    <br>
 
-<%end %>
+    <div class="row justify-content-md-center">
+      <%= form.submit "By Date", class: "btn btn-outline-primary" %>
+    </div>
+
+    <br>
+
+    <div class="row justify-content-md-center">
+      <%= form.submit "By Category", class: "btn btn-outline-success" %>
+    </div>
+
+  <% end %>
+</div>
