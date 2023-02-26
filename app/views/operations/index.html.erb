@@ -1,21 +1,23 @@
+<div class="view">
+  <p style="color: green"><%= notice %></p>
 
-<p style="color: green"><%= notice %></p>
+  <h1>Operations</h1>
 
-<h1>Operations</h1>
+  <div id="operations">
+    <% @operations.each do |operation| %>
+      <%= render operation %>
+      <p>
+        <%= link_to "Show this operation", operation, class: "btn btn-outline-primary" %>
+      </p>
+    <% end %>
+  </div>
 
-<div id="operations">
-  <% @operations.each do |operation| %>
-    <%= render operation %>
-    <p>
-      <%= link_to "Show this operation", operation, class: "btn btn-outline-primary" %>
-    </p>
-  <% end %>
+  <%= paginate @operations %>
+
+  <div>
+    <%= link_to "New operation", new_operation_path, class: "btn btn-outline-success" %>
+  </div>
+  <br>
 </div>
 
-<%= paginate @operations %>
 
-<div>
-  <%= link_to "New operation", new_operation_path, class: "btn btn-outline-success" %>
-</div>
-
-<br>

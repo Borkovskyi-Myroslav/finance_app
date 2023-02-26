@@ -1,16 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<div class="view">
+  <p style="color: green"><%= notice %></p>
 
-<%= render @operation %>
+  <%= render @operation %>
 
 
-<div>
-  <%= link_to "Edit this operation", edit_operation_path(@operation), class: "btn btn-outline-success" %> |
-  <%= link_to "Back to operations", operations_path, class: "btn btn-outline-primary" %>
+  <div>
+    <%= link_to "Edit this operation", edit_operation_path(@operation), class: "btn btn-outline-success" %> |
+    <%= link_to "Back to operations", operations_path, class: "btn btn-outline-primary" %>
 
-</div>
+  </div>
 
-<br>
+  <br>
 
-<div>
-   <%= button_to "Destroy this operation", @operation, method: :delete, class: "btn btn-outline-danger" %>
+  <div>
+    <%= button_to "Destroy this operation", @operation, method: :delete, class: "btn btn-outline-danger" %>
+  </div>
 </div>
