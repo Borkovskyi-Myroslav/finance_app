@@ -1,12 +1,13 @@
+<div class="view">
+  <h1>Editing operation</h1>
 
-<h1>Editing operation</h1>
+  <%= render "form", operation: @operation %>
 
-<%= render "form", operation: @operation %>
+  <br>
 
-<br>
-
-<div>
-  <%= link_to "Show this operation", @operation, class: "btn btn-outline-primary" %> |
-  <%= link_to "Back to operations", operations_path, class: "btn btn-outline-primary" %>
+  <div>
+    <%= link_to "Show this operation", @operation, class: "btn btn-outline-primary" %> |
+    <%= link_to "Back to operations", operations_path, class: "btn btn-outline-primary" %>
+  </div>
 </div>
 

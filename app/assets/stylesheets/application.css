@@ -20,6 +20,10 @@
     box-sizing: border-box;
 }
 
+.view{
+    margin-left: 10px;
+}
+
 .page{
     overflow: hidden;
     display: flex;
@@ -29,8 +33,9 @@
 
 footer {
     margin-top: auto;
-    background: #cc6666;
+    background: #2b3446;
     width: 100%;
+    color: #DADADA;
 }
 
 

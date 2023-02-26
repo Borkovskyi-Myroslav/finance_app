@@ -1,16 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<div class="view">
+  <p style="color: green"><%= notice %></p>
 
 <%# Show the category %>
 
-<%= render @category %>
+  <%= render @category %>
 
-<div>
-  <%= link_to "Edit this category", edit_category_path(@category), class: "btn btn-outline-success" %> |
-  <%= link_to "Back to categories", categories_path, class: "btn btn-outline-primary" %>
-</div>
+  <div>
+    <%= link_to "Edit this category", edit_category_path(@category), class: "btn btn-outline-success" %> |
+    <%= link_to "Back to categories", categories_path, class: "btn btn-outline-primary" %>
+  </div>
 
-<br>
+  <br>
 
-<div>
-   <%= button_to "Destroy this category", @category, method: :delete, class: "btn btn-outline-danger" %>
+  <div>
+    <%= button_to "Destroy this category", @category, method: :delete, class: "btn btn-outline-danger" %>
+  </div>
 </div>
