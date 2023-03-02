@@ -50,6 +50,7 @@
     <orderEntry type="library" scope="PROVIDED" name="crass (v1.0.6, ruby-3.2.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debug (v1.7.1, ruby-3.2.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="diff-lcs (v1.5.0, ruby-3.2.0-p0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="dockerfile-rails (v1.2.2, ruby-3.2.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubi (v1.12.0, ruby-3.2.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_bot (v6.2.1, ruby-3.2.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_bot_rails (v6.2.0, ruby-3.2.0-p0) [gem]" level="application" />
@@ -77,6 +78,7 @@
     <orderEntry type="library" scope="PROVIDED" name="net-smtp (v0.3.3, ruby-3.2.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nio4r (v2.5.8, ruby-3.2.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.14.0, ruby-3.2.0-p0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pg (v1.4.6, ruby-3.2.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="public_suffix (v5.0.1, ruby-3.2.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="puma (v5.6.5, ruby-3.2.0-p0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="racc (v1.6.2, ruby-3.2.0-p0) [gem]" level="application" />

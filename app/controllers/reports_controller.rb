@@ -21,9 +21,12 @@ class ReportsController < ApplicationController
     @by_category = @records.joins(:category).group('categories.name').sum("amount")
 
     # Report by Date
-    @by_date = @records.group("strftime('%m-%d-%Y', odate)").sum("amount")
+    #@by_date = @records.group("strftime('%m-%d-%Y', odate)").sum("amount")
+     @by_date = @records.group("odate").sum("amount")
 
   end
+
+
 
   private
 
