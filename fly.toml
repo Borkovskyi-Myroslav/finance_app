@@ -1,6 +1,6 @@
-# fly.toml file generated for falling-sun-4757 on 2023-02-26T21:54:36+02:00
+# fly.toml file generated for finance-manager on 2023-03-02T23:21:11+02:00
 
-app = "falling-sun-4757"
+app = "finance-manager"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
